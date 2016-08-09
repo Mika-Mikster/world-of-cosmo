@@ -16,6 +16,7 @@ $(function(){
         typeSpeed: 30,
         backDelay: 1000,
         backSpeed: 0,
+
         loop: false,
         contentType: 'html', // or text
         // defaults to false for infinite loop
@@ -35,3 +36,4 @@ function newTyped(){ /* A new typed object */ }
 function foo(){
     document.getElementById("laterView").style.visibility = "visible";
     console.log("Callback"); }
+
