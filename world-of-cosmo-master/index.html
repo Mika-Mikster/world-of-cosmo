@@ -12,12 +12,12 @@
     <!--<script src="jquery.js" type="text/javascript"></script>-->
     <!--<link href="typed.js-master/main.css" rel="stylesheet"/>-->
 </head>
-<body ng-app="viewApp">
+<body><div ng-app="viewApp">
             <ul class="nav">
-                <li><a href="#dialogOne"> One </a></li>
-                <li><a href="#dialogTwo"> Two </a></li>
+                <li><a href="#dialogOne" style="visibility: hidden"> One </a></li>
+                <li><a href="#dialogTwo" style="visibility: hidden"> Two </a></li>
             </ul>
                     <div ng-view></div>
-
+</div>
 </body>
 </html>
