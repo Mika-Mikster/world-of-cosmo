@@ -34,6 +34,7 @@ $(function(){
 function newTyped(){ /* A new typed object */ }
 
 function foo(){
+    console.log("Callback");
     document.getElementById("laterView").style.visibility = "visible";
-    console.log("Callback"); }
+}
 
