@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The wonderful world of Cosmo</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
+
+    <script src="js/view-app.js"></script>
+</head>
+<div ng-controller="itembagctrl">
+    <table class="table">
+        <tr ng-repeat="itemsbag in itemsbags">
+            <td>{{itemsbag.itemName}}</td>
+            <td>{{itemsbag.itemDescr}}</td>
+            <td>{{itemsbag.itemAbi}}</td>
+            <td>{{itemsbag.itemHit}}</td>
+            <td>{{itemsbag.itemHeal}}</td>
+        </tr>
+    </table>
+</div>
+<body ng-app="viewApp">
+
+<div ng-view></div>
+
+</body>
+</html>
