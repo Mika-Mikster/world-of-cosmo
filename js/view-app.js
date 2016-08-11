@@ -17,6 +17,10 @@ viewApp.config(['$routeProvider',
             templateUrl: '/dialog/dialogTwo.html',
             controller: 'dialogTwoController'
         }).
+        when('/dialogThree', {
+            templateUrl: '/dialog/dialogThree.html',
+            controller: 'dialogThreeController'
+        }).
         otherwise({
             redirectTo: '/dialogOne'
         });
@@ -24,14 +28,13 @@ viewApp.config(['$routeProvider',
 
 
 viewApp.controller('dialogOneController', function($scope) {
-
-    $scope.message = 'This is Add new order screen';
-
 });
 
 
 viewApp.controller('dialogTwoController', function($scope) {
+});
 
-    $scope.message = 'This is Show orders screen';
+viewApp.controller('dialogThreeController', function($scope) {
+    // $scope.message = 'This is Show orders screen';
 
 });

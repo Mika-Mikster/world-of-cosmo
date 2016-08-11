@@ -7,23 +7,10 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
     <script src="js/view-app.js"></script>
-    <!--<script src="typed.js-master/js/typed.js" type="text/javascript"></script>-->
-    <!--<script src="jquery.js" type="text/javascript"></script>-->
-    <!--<link href="typed.js-master/main.css" rel="stylesheet"/>-->
 </head>
 <body><div id="overlay"></div>
 <div ng-app="viewApp">
-            <ul class="nav">
-                <li><a href="#dialogOne" style="visibility: hidden"> One </a></li>
-                <li><a href="#dialogTwo" style="visibility: hidden"> Two </a></li>
-            </ul>
-                    <div ng-view></div>
-    <div id="popup">
-        <div class="popupcontent">
-            <p>"The page starts rippling and fluorescent colors start spilling out as you are pulled into the flyer. <br>You have entered the World of Cosmo..."</p>
-            <a href=#dialogTwo id="popupclose">Continue</span></a>
-        </div>
-    </div>
+    <div ng-view></div>
 </div>
 </body>
 </html>

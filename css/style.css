@@ -1,3 +1,9 @@
+p{
+    line-height: 2em;
+    margin:0 0 0px;
+    text-align: center;
+}
+
 #overlay {
     display: none;
     position: absolute;

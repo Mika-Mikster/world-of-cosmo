@@ -16,7 +16,6 @@ $(function(){
         typeSpeed: 30,
         backDelay: 1000,
         backSpeed: 0,
-
         loop: false,
         contentType: 'html', // or text
         // defaults to false for infinite loop
@@ -34,6 +33,14 @@ $(function(){
 function newTyped(){ /* A new typed object */ }
 
 function foo(){
-    document.getElementById("button").style.visibility = "visible";
-    console.log("Callback"); }
-
+var elems = document.getElementsByClassName('choices');
+for (var i=0; i<elems.length; i++) {
+    if (elems[i].style.visibility == 'hidden') {
+        console.log("Elems hidden but no longer undefined");
+            elems[i].style.visibility = 'visible';
+    }
+    else {
+        console.log("Elems cannot be checked");
+    }
+}
+};
