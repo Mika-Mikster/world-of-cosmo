@@ -1,27 +1,21 @@
-@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,500);
-
-*{
-	padding:0;
-	margin:0;
-}
-
-body{
-	font-family: "Ubuntu", sans-serif;
-	font-size: 100%;
-	background:#f8f8f8;
-}
 
 a{
 	text-decoration: none;
-	color:#666;
+	color: #008000;
 }
-	a:hover{
-		color:#999;
-	}
+a:hover{
+	color:#50D050;
+}
+
+a.blackText{
+	color: black;
+}
+
 p{
 	line-height: 2em;
 	margin:0 0 20px;
 	text-align: center;
+	color: #008000;
 }
 
 .wrap{
@@ -32,9 +26,11 @@ p{
 .type-wrap{
 	margin:10px auto;
 	padding:20px;
-	background:#f0f0f0;
+	background:#000000;;
 	border-radius:5px;
-	border:#CCC 1px solid;
+	border:#00FFFF 5px dotted;
+	color: #F52887;
+	font-size: 1.2em;
 }
 
 .links{

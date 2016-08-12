@@ -4,3 +4,26 @@ body {
     background:#000000;
     font-family: 'Slabo 27px', serif;
 }
+
+div.table {
+    color: #4EE2EC;
+    border: yellow 2px dotted;
+    margin: 20px;
+    padding: 20px;
+    width: 300px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td {
+    text-align: left;
+    position: relative;
+    padding-left: 10px;
+}
+
+h1 {
+    text-decoration: underline;
+    padding-bottom: 10px;
+}

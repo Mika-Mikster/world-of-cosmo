@@ -43,21 +43,32 @@ viewApp.controller('dialogOneController', function($scope) {
 });
 
 
-viewApp.controller('dialogTwoController', function($scope) {
+viewApp.controller('dialogTwoController', function($scope, $http) {
+
+    $scope.itemsbag2 = {
+        id: 0, itemName: "Jar of Bicarbonate", itemDescr: "An ingredient used for ......", itemAbi: "It can be mixed with other ingredients", itemHit: "0", itemHeal: "0",
+    };
+    $scope.save = function () {
+        $http.post('/itemsbag', angular.toJson($scope.itemsbag2)).success(function () {
+        });
+    };
+
 });
 
 viewApp.controller('dialogThreeController', function($scope) {
     // $scope.message = 'This is Show orders screen';
 });
+
 viewApp.controller('dialogFourAController', function($scope) {
 });
+
 viewApp.controller('dialogFourBController', function($scope) {
 });
+
 viewApp.controller('dialogFourCController', function($scope) {
 });
 
-
-viewApp.controller ("itembagctrl", function ($scope, $http) {
+viewApp.controller ("itembagCtrl", function ($scope, $http) {
     $scope.load = function ()  {
         $http.get('/itemsbag').
         success(function(data, status, headers, config) {
@@ -70,4 +81,10 @@ viewApp.controller ("itembagctrl", function ($scope, $http) {
     };
 
     $scope.load();
+
 });
+    // $scope.delete = function (ID) {
+    //     $http.delete("/itemsbag/" + ID).success(function() {
+    //         $scope.load();
+    //     });
+    // };

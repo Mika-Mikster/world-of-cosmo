@@ -50,10 +50,6 @@ button {
     margin-top: 10px;
 }
 
-#button:hover {
-    border: #D80A00 5px outset;
-}
-
 #popupclose {
     padding: 10px;
     cursor: pointer;
