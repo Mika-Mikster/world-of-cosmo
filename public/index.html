@@ -7,23 +7,30 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
 
     <script src="js/view-app.js"></script>
+    <link rel="stylesheet" href="css/global.css">
 </head>
-<div ng-controller="itembagctrl">
-    <table class="table">
-        <tr ng-repeat="itemsbag in itemsbags">
-            <td>{{itemsbag.itemName}}</td>
-            <td>{{itemsbag.itemDescr}}</td>
-            <td>{{itemsbag.itemAbi}}</td>
-            <td>{{itemsbag.itemHit}}</td>
-            <td>{{itemsbag.itemHeal}}</td>
-        </tr>
-    </table>
+<body>
+<div id="overlay"></div>
+<div ng-app="viewApp">
+
+    <div ng-controller="itembagCtrl">
+        <table class="table">
+            <tr ng-repeat="itemsbag in itemsbags">
+                <td>{{itemsbag.itemName}}</td>
+                <td>{{itemsbag.itemDescr}}</td>
+                <td>{{itemsbag.itemAbi}}</td>
+                <td>{{itemsbag.itemHit}}</td>
+                <td>{{itemsbag.itemHeal}}</td>
+            </tr>
+        </table>
+    </div>
+
+
+
+    <div ng-view></div>
 </div>
-<body ng-app="viewApp">
-
-<div ng-view></div>
-
 </body>
 </html>

@@ -31,5 +31,14 @@ $(function(){
 function newTyped(){ /* A new typed object */ }
 
 function foo(){
-    document.getElementById("button").style.visibility = "visible";
-    console.log("Callback"); }
+    var elems = document.getElementsByClassName('choices');
+    for (var i=0; i<elems.length; i++) {
+        if (elems[i].style.visibility == 'hidden') {
+            console.log("Elems visible");
+            elems[i].style.visibility = 'visible';
+        }
+        else {
+            console.log("Elems cannot be checked");
+        }
+    }
+};

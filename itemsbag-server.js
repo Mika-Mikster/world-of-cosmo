@@ -29,13 +29,10 @@ app.post('/itemsbag', function (req, res) {
     connection.connect();
     var newItem = {id: 0, itemName: req.body.itemName, itemDescr: req.body.itemDescr, itemAbi: req.body.itemAbi, itemHit: req.body.itemHit, itemHeal: req.body.itemHeal};
     var query = connection.query('INSERT INTO itemsbag SET ?', newItem, function (err, result) {
-        console.log("added " +  newItem);
+        console.log("added " +  newItem.itemName);
         res.status(200).end();
     });
-    /* connection.end();
-     var task = {itemName: req.body.itemName, itemDescr: req.body.itemDescr, itemAbi: req.body.itemAbi, itemHit: req.body.itemHit, itemHeal: req.body.itemHeal};
-     lijst.push(task);
-     res.status(200).end();*/
+    connection.end();
 });
 
 app.get('/itemsbag', function(req, res) {

@@ -17,6 +17,10 @@ viewApp.config(['$routeProvider',
             templateUrl: '/dialog/dialogTwo.html',
             controller: 'dialogTwoController'
         }).
+        when('/dialogThree', {
+            templateUrl: '/dialog/dialogThree.html',
+            controller: 'dialogThreeController'
+        }).
         otherwise({
             redirectTo: '/dialogOne'
         });
@@ -24,19 +28,28 @@ viewApp.config(['$routeProvider',
 
 
 viewApp.controller('dialogOneController', function($scope) {
-
-    $scope.message = 'This is Add new order screen';
-
 });
 
 
-viewApp.controller('dialogTwoController', function($scope) {
+viewApp.controller('dialogTwoController', function($scope, $http) {
 
-    $scope.message = 'This is Show orders screen';
+    $scope.itemsbag2 = {
+        id: 0, itemName: "Jar of Bicarbonate", itemDescr: "An ingredient used for ......", itemAbi: "It can be mixed with other ingredients", itemHit: "0", itemHeal: "0",
+    };
+    $scope.save = function () {
+        $http.post('/itemsbag', angular.toJson($scope.itemsbag2)).success(function () {
+            //$scope.load();
+        });
+    };
 
 });
 
-viewApp.controller ("itembagctrl", function ($scope, $http) {
+viewApp.controller('dialogThreeController', function($scope) {
+    // $scope.message = 'This is Show orders screen';
+
+});
+
+viewApp.controller ("itembagCtrl", function ($scope, $http) {
     $scope.load = function ()  {
         $http.get('/itemsbag').
         success(function(data, status, headers, config) {
@@ -49,4 +62,10 @@ viewApp.controller ("itembagctrl", function ($scope, $http) {
     };
 
     $scope.load();
+
 });
+    // $scope.delete = function (ID) {
+    //     $http.delete("/itemsbag/" + ID).success(function() {
+    //         $scope.load();
+    //     });
+    // };
