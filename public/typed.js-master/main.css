@@ -1,0 +1,40 @@
+
+a{
+	text-decoration: none;
+	color: #008000;
+}
+a:hover{
+	color:#50D050;
+}
+
+a.blackText{
+	color: black;
+}
+
+p{
+	line-height: 2em;
+	margin:0 0 20px;
+	text-align: center;
+	color: #008000;
+}
+
+.wrap{
+	max-width: 600px;
+	margin:150px auto;
+}
+
+.type-wrap{
+	margin:10px auto;
+	padding:20px;
+	background:#000000;;
+	border-radius:5px;
+	border:#00FFFF 5px dotted;
+	color: #F52887;
+	font-size: 1.2em;
+}
+
+.links{
+	margin:20px 0;
+	font-size: 0.75em;
+	text-align: center;
+}
