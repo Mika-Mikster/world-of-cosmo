@@ -1,0 +1,114 @@
+*{
+margin: 0 auto;
+padding: 0 auto;
+}
+
+body {
+    background:#000000;
+    font-family: 'Slabo 27px', serif;
+    color: #FFF;
+}
+
+.bag{
+    padding:10px;
+    color: #4EE2EC;
+}
+
+.bag h1{
+    text-align: center;
+    font-size:1.5em;
+    text-decoration: underline;
+    padding-bottom: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    line-height: 1.5em;
+}
+
+a{
+    text-decoration: none;
+    color: #008000;
+}
+
+a:hover{
+    color:#50D050;
+}
+
+a.blackText{
+    color: black;
+}
+
+.container{
+    top: 13%;
+    left: 48%;
+    margin-left: -36%;
+    width:70%;
+    height:60%;
+    padding:2%;
+    border: #008000 4px dotted;
+    position:absolute;
+}
+
+section{
+    width:70%;
+    float:left;
+    margin-right:2%;
+    height:100%;
+    font-color: #F52887;
+    overflow: hidden;
+}
+
+.wrap{
+    width:98%;
+    height:69%;
+    border:#00FFFF 3px dotted;
+}
+
+.buttons{
+    width:99%;
+    height:23%;
+    float: left;
+}
+
+.space{
+    height:5%;
+    width:98%;
+}
+
+aside{
+    width:26%;
+    float:right;
+    height:100%;
+    font-color: #4EE2EC;
+    border: yellow 2px dotted;
+    overflow: hidden;
+    text-align: left;
+}
+
+.type-wrap{
+    padding:10px;
+    color: #F52887;
+    font-size: 1.2em;
+}
+
+.type-wrap p, span{
+    line-height: 1em;
+    text-align: center;
+}
+
+.timer{
+    visibility: hidden;
+}
+
+button{
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    background-color: orange;
+    border: #F62817 3px outset;
+    min-width: 200px;
+    min-height:40px;
+    max-height: 80px;
+    margin-top: 10px;
+}
