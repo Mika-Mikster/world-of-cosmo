@@ -72,7 +72,7 @@ viewApp.controller('dialogTwoController', function($scope, $http, testService) {
 
 });
 
-viewApp.controller('dialogThreeController', function($scope, testService) {
+viewApp.controller('dialogThreeController', function($scope, $http, testService) {
     testService.setTrigger("Item from dialog 3");
 
     $scope.itemsbag2 = {
@@ -85,7 +85,6 @@ viewApp.controller('dialogThreeController', function($scope, testService) {
     };
 
     $scope.save = function() {
-        console.log("save water after ... sec");
         $http.post(
             '/itemsbag', angular.toJson($scope.itemsbag2)
         ).success(
@@ -95,26 +94,10 @@ viewApp.controller('dialogThreeController', function($scope, testService) {
     };
 });
 
-viewApp.controller('dialogFourAController', function($scope, testService, $timeout) {
+viewApp.controller('dialogFourAController', function($scope, $http, testService, $timeout) {
     $timeout(function(){
-        testService.setTrigger("Item from dialog 4A");
-    }, 1000);
-});
-
-viewApp.controller('dialogFourBController', function($scope, $timeout, testService) {
-    $timeout(function(){
-        testService.setTrigger("Item from dialog 4B");
-    }, 1000);
-});
-
-viewApp.controller('dialogFourCController', function($scope, $timeout, testService) {
-    $timeout(function(){
-        testService.setTrigger("Item from dialog 4C");
-    }, 1000);
-});
-
-
-viewApp.controller('dialogFiveAController', function($scope, $http, $timeout, $testService) {
+        testService.setTrigger("Delay save item from dialog 3");
+    }, 2000);
 
     $scope.itemsbag4 = {
         id: 0,
@@ -125,14 +108,60 @@ viewApp.controller('dialogFiveAController', function($scope, $http, $timeout, $t
         itemHeal: "15"
     };
 
-    $timeout(function () {
-        $scope.delete = function (ID) {
-            $http.delete("/itemsbag" + ID).succes(function() {
-                testService.setTrigger("Deleted item from dialog 5A");
-            });
-        }
-    }, 1000);
+    $scope.delete = function (ID) {
+        $http.delete("/itemsbag/" + 2).success(function() {
+            testService.setTrigger("Deleted item from dialog 5A");
+        });
+    };
+});
 
+viewApp.controller('dialogFourBController', function($scope, $http, testService) {
+
+    $scope.itemsbag2 = {
+        id: 0,
+        itemName: "Bottle of Water",
+        itemDescr: "An ingredient used for ......",
+        itemAbi: "It can be mixed with other ingredients",
+        itemHit: "15",
+        itemHeal: "15"
+    };
+
+    $scope.save = function() {
+        $http.post(
+            '/itemsbag', angular.toJson($scope.itemsbag2)
+        ).success(
+            function () {
+                testService.setTrigger("Item from dialog 3");
+            });
+    };
+});
+
+viewApp.controller('dialogFourCController', function($scope, $http, testService) {
+
+    $scope.itemsbag2 = {
+        id: 0,
+        itemName: "Bottle of Water",
+        itemDescr: "An ingredient used for ......",
+        itemAbi: "It can be mixed with other ingredients",
+        itemHit: "15",
+        itemHeal: "15"
+    };
+
+    $scope.save = function() {
+        $http.post(
+            '/itemsbag', angular.toJson($scope.itemsbag2)
+        ).success(
+            function () {
+                testService.setTrigger("Item from dialog 3");
+            });
+    };
+});
+
+
+viewApp.controller('dialogFiveAController', function($scope, $http, $timeout, testService) {
+    $timeout(function(){
+        testService.setTrigger("Delay delete item from dialog 4A");
+    }, 3000);
 
     $scope.itemsbag3 = {
         id: 0,
@@ -167,7 +196,22 @@ viewApp.controller('dialogFiveAController', function($scope, $http, $timeout, $t
     };
 
 });
-viewApp.controller('dialogFiveBController', function($scope) {
+viewApp.controller('dialogFiveBController', function($scope, $http, testService) {
+
+    $scope.itemsbag3 = {
+        id: 0,
+        itemName: "Bottle of Water",
+        itemDescr: "An ingredient used for ......",
+        itemAbi: "It can be mixed with other ingredients",
+        itemHit: "15",
+        itemHeal: "15"
+    };
+
+    $scope.delete = function (ID) {
+        $http.delete("/itemsbag/" + 2).success(function() {
+            testService.setTrigger("Deleted item from dialog 5A");
+        });
+    };
 });
 
 // service
