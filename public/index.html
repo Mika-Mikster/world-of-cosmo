@@ -15,23 +15,21 @@
 <body>
 <div id="overlay"></div>
 <div ng-app="viewApp">
-
-    <div class="table" ng-controller="itembagCtrl">
-        <table class="table">
+    <div id="container">
+        <div class="bagcontent table" ng-controller="itembagCtrl">
             <h1>Content fabulous bag</h1>
-            <tr ng-repeat="itemsbag in itemsbags">
-                <td>{{itemsbag.itemName}}</td>
-                <td>{{itemsbag.itemDescr}}</td>
-                <td>{{itemsbag.itemAbi}}</td>
-                <td>{{itemsbag.itemHit}}</td>
-                <td>{{itemsbag.itemHeal}}</td>
-            </tr>
-        </table>
+            <table class="table">
+                <tr id="nameItem" ng-repeat="itemsbag in itemsbags">
+                    <th>{{itemsbag.itemName}}</th>
+                    <td >{{itemsbag.itemDescr}}</td>
+                    <td>{{itemsbag.itemAbi}}</td>
+                    <td>{{itemsbag.itemHit}}</td>
+                    <td>{{itemsbag.itemHeal}}</td>
+                </tr>
+            </table>
+        </div>
+        <div ng-view></div>
     </div>
-
-
-
-    <div ng-view></div>
 </div>
 </body>
 </html>

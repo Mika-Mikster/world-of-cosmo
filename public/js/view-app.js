@@ -51,7 +51,7 @@ viewApp.controller('dialogOneController', function($scope) {
 });
 
 
-viewApp.controller('dialogTwoController', function($scope, $http) {
+viewApp.controller('dialogTwoController', function($scope, $http, testService) {
 
     $scope.itemsbag1 = {
         id: 0,
@@ -66,21 +66,14 @@ viewApp.controller('dialogTwoController', function($scope, $http) {
             '/itemsbag',
             angular.toJson($scope.itemsbag1)).success(
             function() {
-                $scope.load();
+                testService.setTrigger("Item from dialog 2");
             });
     };
 
-
-
 });
 
-viewApp.controller('dialogThreeController', function($scope) {
-    $scope.myLoadingFunction = function() {
-        $state.reload();
-    };
-});
-
-viewApp.controller('dialogFourAController', function($scope) {
+viewApp.controller('dialogThreeController', function($scope, testService) {
+    testService.setTrigger("Item from dialog 3");
 
     $scope.itemsbag2 = {
         id: 0,
@@ -90,25 +83,56 @@ viewApp.controller('dialogFourAController', function($scope) {
         itemHit: "15",
         itemHeal: "15"
     };
+
     $scope.save = function() {
+        console.log("save water after ... sec");
         $http.post(
-            '/itemsbag',
-            angular.toJson($scope.itemsbag2)).success(
+            '/itemsbag', angular.toJson($scope.itemsbag2)
+        ).success(
             function() {
-                $scope.load();
+                testService.setTrigger("Item from dialog 3");
             });
     };
-
 });
 
-viewApp.controller('dialogFourBController', function($scope) {
+viewApp.controller('dialogFourAController', function($scope, testService, $timeout) {
+    $timeout(function(){
+        testService.setTrigger("Item from dialog 4A");
+    }, 1000);
 });
 
-viewApp.controller('dialogFourCController', function($scope) {
+viewApp.controller('dialogFourBController', function($scope, $timeout, testService) {
+    $timeout(function(){
+        testService.setTrigger("Item from dialog 4B");
+    }, 1000);
+});
+
+viewApp.controller('dialogFourCController', function($scope, $timeout, testService) {
+    $timeout(function(){
+        testService.setTrigger("Item from dialog 4C");
+    }, 1000);
 });
 
 
-viewApp.controller('dialogFiveAController', function($scope, $http) {
+viewApp.controller('dialogFiveAController', function($scope, $http, $timeout, $testService) {
+
+    $scope.itemsbag4 = {
+        id: 0,
+        itemName: "Bottle of Water",
+        itemDescr: "An ingredient used for ......",
+        itemAbi: "It can be mixed with other ingredients",
+        itemHit: "15",
+        itemHeal: "15"
+    };
+
+    $timeout(function () {
+        $scope.delete = function (ID) {
+            $http.delete("/itemsbag" + ID).succes(function() {
+                testService.setTrigger("Deleted item from dialog 5A");
+            });
+        }
+    }, 1000);
+
 
     $scope.itemsbag3 = {
         id: 0,
@@ -128,11 +152,16 @@ viewApp.controller('dialogFiveAController', function($scope, $http) {
         itemHeal: "15"
     };
 
+
     $scope.save = function () {
-        $http.post('/itemsbag', angular.toJson($scope.itemsbag3)).success(function () {
+        $http.post(
+            '/itemsbag', angular.toJson($scope.itemsbag3)
+        ).success(function () {
             $scope.load();
         });
-        $http.post('/itemsbag', angular.toJson($scope.itemsbag4)).success(function () {
+        $http.post(
+            '/itemsbag', angular.toJson($scope.itemsbag4)
+        ).success(function () {
             $scope.load();
         });
     };
@@ -141,23 +170,37 @@ viewApp.controller('dialogFiveAController', function($scope, $http) {
 viewApp.controller('dialogFiveBController', function($scope) {
 });
 
-viewApp.controller ("itembagCtrl", function ($scope, $http) {
-    $scope.load = function ()  {
+// service
+viewApp.service('testService', function(){
+
+    this.setTrigger= function(text){
+        notification();
+    };
+    var notification;
+    this.addNotification= function(notification2) {
+        notification = notification2;
+    };
+});
+
+// Itembag controller
+viewApp.controller ("itembagCtrl", function ($scope, $http, testService){
+    $scope.load = function(){
+
+        console.log("loading item");
         $http.get('/itemsbag').
-        success(function(data, status, headers, config) {
+        success(function(data, status, headers, config)
+        {
             $scope.itemsbags = data;
-        }).
-        error(function(data, status, headers, config) {
+        }).error(function(data, status, headers, config) {
             console.log(status);
             console.log(data);
         });
     };
-
+    testService.addNotification(
+        $scope.load
+    );
     $scope.load();
-
 });
-// $scope.delete = function (ID) {
-//     $http.delete("/itemsbag/" + ID).success(function() {
-//         $scope.load();
-//     });
-// };
+
+
+
