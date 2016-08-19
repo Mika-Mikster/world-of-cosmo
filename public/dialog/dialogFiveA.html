@@ -1,22 +1,36 @@
 <link href="/css/pop-up.css" rel="stylesheet"/>
 <div class="wrap">
     <div class="type-wrap">
-        <p>As she swings the lipstick in your direction you instinctively evade her first attack.</p>
-        <!--<br>While you twist the cap off of a bottle of water, the crazed woman sprays a cloud of intoxicating perfume around you.</span>-->
-        <!--<br>Coughing violently you throw the water in her face.-->
-        <!--<p>With a deafening howl the saleswoman shrinks away from you.-->
-        <!--<br>You faintly hear the sound of something falling. *clink clink*-->
-        <!--<br>“My, my foundation! It’s melting!” Her hands clasping her face, worsening the effect of the water on her caked layers of make up.-->
-        <!--<br>Panda-eyed and defeated she throws you the ugliest look you have ever seen.-->
-        <!--<br>In a series of sudden motions she claws her way out the store, leaving you still coughing and catching your breath.</p>-->
-        <!--<p>On the floor, half hidden under a shelf, lies a key.-->
-        <!--<br>You pick it up and make your way to the cash counter.-->
-        <!--<br>Somewhere there must be a lock to match it.-->
-        <!--<br>In a cabinet underneath the counter you find a hidden safe.-->
-        <!--</p>-->
-    </div></div>
+        <div class="part1">
+            <p>As she swings the lipstick in your direction you instinctively evade her first attack.</p>
+            <p>While you twist the cap off of a bottle of water, the crazed woman sprays a cloud of intoxicating perfume around you.
+                <br>Coughing violently you throw the water in her face.
+            </p>
+        </div>
+        <div class="part2">
+            <p>With a deafening howl the saleswoman shrinks away from you.
+                <br>You faintly hear the sound of something falling. *clink clink*
+            </p>
+        </div>
+        <div class="part3">
+            <p>“My, my foundation! It’s melting!” Her hands clasping her face, worsening the effect of the water on her caked layers of make up.
+                <br>Panda-eyed and defeated she throws you the ugliest look you have ever seen.
+                <br>In a series of sudden motions she claws her way out the store, leaving you still coughing and catching your breath.
+            </p>
+        </div>
+        <div class="part4">
+            <p>On the floor, half hidden under a shelf, lies a key.
+                <br>You pick it up and make your way to the cash counter.
+                <br>Somewhere there must be a lock to match it.
+                <br>In a cabinet underneath the counter you find a hidden safe.
+            </p>
+        </div>
+    </div>
+</div>
+
 <div class="buttons">
-<button id="popupbutton" class="timer">Open the hidden safe..</button></div>
+    <button id="popupbutton" class="timer">Open the hidden safe..</button>
+</div>
 
 <div id="popup">
     <div id="popupcontent">
@@ -30,11 +44,13 @@
         </p>
         <div>
             <form>
-                <button id="popupclose" type="submit" ng-click="save()"><a href=#dialogSix>Save progress and
-                    continue</a></button>
+                <button id="popupclose" type="submit" ng-click="save()">
+                    <a href=#dialogSix>Save progress and continue</a>
+                </button>
             </form>
         </div>
     </div>
 </div>
+
 <script src="/js/popup.js"></script>
-<script src="/js/timer.js"></script>
+<script src="/js/replacer-medium.js"></script>

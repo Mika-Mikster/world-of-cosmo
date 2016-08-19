@@ -72,11 +72,11 @@ viewApp.controller('dialogTwoController', function($scope, $http, testService) {
 
 });
 
-viewApp.controller('dialogThreeController', function($scope, $http, testService) {
-    testService.setTrigger("Item from dialog 3");
+viewApp.controller('dialogThreeController', function($scope, testService, $http) {
+    testService.setTrigger("Item from dialog 2");
 
     $scope.itemsbag2 = {
-        id: 0,
+        id: 2,
         itemName: "Bottle of Water",
         itemDescr: "An ingredient used for ......",
         itemAbi: "It can be mixed with other ingredients",
@@ -99,7 +99,7 @@ viewApp.controller('dialogFourAController', function($scope, $http, testService,
         testService.setTrigger("Delay save item from dialog 3");
     }, 2000);
 
-    $scope.itemsbag4 = {
+    $scope.itemsbag5 = {
         id: 0,
         itemName: "Bottle of Water",
         itemDescr: "An ingredient used for ......",
@@ -108,16 +108,18 @@ viewApp.controller('dialogFourAController', function($scope, $http, testService,
         itemHeal: "15"
     };
 
-    $scope.delete = function (ID) {
-        $http.delete("/itemsbag/" + 2).success(function() {
-            testService.setTrigger("Deleted item from dialog 5A");
-        });
+    $scope.delete = function (Name) {
+        $timeout(function(){
+            $http.delete("/itemsbag/" + "Bottle of Water").success(function() {
+                testService.setTrigger("Deleted item from dialog 5A");
+            });
+        }, 14000);
     };
 });
 
 viewApp.controller('dialogFourBController', function($scope, $http, testService) {
 
-    $scope.itemsbag2 = {
+    $scope.itemsbag3 = {
         id: 0,
         itemName: "Bottle of Water",
         itemDescr: "An ingredient used for ......",
@@ -128,7 +130,7 @@ viewApp.controller('dialogFourBController', function($scope, $http, testService)
 
     $scope.save = function() {
         $http.post(
-            '/itemsbag', angular.toJson($scope.itemsbag2)
+            '/itemsbag', angular.toJson($scope.itemsbag3)
         ).success(
             function () {
                 testService.setTrigger("Item from dialog 3");
@@ -138,7 +140,7 @@ viewApp.controller('dialogFourBController', function($scope, $http, testService)
 
 viewApp.controller('dialogFourCController', function($scope, $http, testService) {
 
-    $scope.itemsbag2 = {
+    $scope.itemsbag4 = {
         id: 0,
         itemName: "Bottle of Water",
         itemDescr: "An ingredient used for ......",
@@ -149,7 +151,7 @@ viewApp.controller('dialogFourCController', function($scope, $http, testService)
 
     $scope.save = function() {
         $http.post(
-            '/itemsbag', angular.toJson($scope.itemsbag2)
+            '/itemsbag', angular.toJson($scope.itemsbag4)
         ).success(
             function () {
                 testService.setTrigger("Item from dialog 3");
@@ -163,7 +165,7 @@ viewApp.controller('dialogFiveAController', function($scope, $http, $timeout, te
         testService.setTrigger("Delay delete item from dialog 4A");
     }, 3000);
 
-    $scope.itemsbag3 = {
+    $scope.itemsbag7 = {
         id: 0,
         itemName: "Bottle of Olive Oil",
         itemDescr: "An ingredient used for ......",
@@ -172,7 +174,7 @@ viewApp.controller('dialogFiveAController', function($scope, $http, $timeout, te
         itemHeal: "15"
     };
 
-    $scope.itemsbag4 = {
+    $scope.itemsbag8 = {
         id: 0,
         itemName: "Bottle of Water",
         itemDescr: "An ingredient used for ......",
@@ -184,12 +186,12 @@ viewApp.controller('dialogFiveAController', function($scope, $http, $timeout, te
 
     $scope.save = function () {
         $http.post(
-            '/itemsbag', angular.toJson($scope.itemsbag3)
+            '/itemsbag', angular.toJson($scope.itemsbag7)
         ).success(function () {
             $scope.load();
         });
         $http.post(
-            '/itemsbag', angular.toJson($scope.itemsbag4)
+            '/itemsbag', angular.toJson($scope.itemsbag8)
         ).success(function () {
             $scope.load();
         });
@@ -198,7 +200,7 @@ viewApp.controller('dialogFiveAController', function($scope, $http, $timeout, te
 });
 viewApp.controller('dialogFiveBController', function($scope, $http, testService) {
 
-    $scope.itemsbag3 = {
+    $scope.itemsbag6 = {
         id: 0,
         itemName: "Bottle of Water",
         itemDescr: "An ingredient used for ......",
@@ -207,10 +209,12 @@ viewApp.controller('dialogFiveBController', function($scope, $http, testService)
         itemHeal: "15"
     };
 
-    $scope.delete = function (ID) {
-        $http.delete("/itemsbag/" + 2).success(function() {
-            testService.setTrigger("Deleted item from dialog 5A");
-        });
+    $scope.delete = function (Name) {
+        $timeout(function(){
+            $http.delete("/itemsbag/" + "Bottle of Water").success(function() {
+                testService.setTrigger("Deleted item from dialog 5A");
+            });
+        }, 14000);
     };
 });
 
@@ -254,3 +258,6 @@ viewApp.controller ("itembagCtrl", function ($scope, $http, testService){
 
     $scope.load();
 });
+
+
+

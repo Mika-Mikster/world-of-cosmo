@@ -1,3 +1,4 @@
+
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
@@ -61,12 +62,12 @@ app.get('/itemsbag', function(req, res) {
     connection.end();
 });
 
-app.delete('/itemsbag/:id', function(req, res) {
-    var ID = req.params.id;
+app.delete('/itemsbag/:itemName', function(req, res) {
+    var Name = req.params.itemName;
     var connection = getConnection();
-    console.log("deleted " + ID);
+    console.log("deleted " + Name);
     connection.connect();
-    connection.query('DELETE from itemsbag where id = ?', ID,  function(err, rows, fields) {
+    connection.query('DELETE from itemsbag where itemName = ?', Name,  function(err, rows, fields) {
 
         res.status(200).end();
     });

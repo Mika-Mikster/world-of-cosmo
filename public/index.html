@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,23 +24,23 @@
                 <div ng-controller="itembagCtrl">
                     <div class="bag">
                         <h1>Fabulous bag</h1>
-                    <ul>
-                        <li ng-repeat="itemsbag in itemsbags" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
-                        {{itemsbag.itemName}}
-                        <div id="itemspopup" ng-show="hoverEdit">
-                            <div id="itemspopupcontent"><ul>
-                                <li>{{itemsbag.itemName}}</li>
-                                <li>{{itemsbag.itemDescr}}</li>
-                                <li>{{itemsbag.itemAbi}}</li>
-                                <li>{{itemsbag.itemHit}}</li>
-                                <li>{{itemsbag.itemHeal}}</li>
-                            </ul>
-                            </div>
-                        </div>
-                    </li>
-                    </ul>
-                </div>
+                        <ul>
+                            <li ng-repeat="itemsbag in itemsbags" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+                                {{itemsbag.itemName}}
+                                <div id="itemspopup" ng-show="hoverEdit">
+                                    <div id="itemspopupcontent"><ul>
+                                        <li>{{itemsbag.itemName}}</li>
+                                        <li>{{itemsbag.itemDescr}}</li>
+                                        <li>{{itemsbag.itemAbi}}</li>
+                                        <li>{{itemsbag.itemHit}}</li>
+                                        <li>{{itemsbag.itemHeal}}</li>
+                                    </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
+                </div>
             </div>
         </aside>
     </div>

@@ -1,7 +1,13 @@
 *{
-margin: 0 auto;
-padding: 0 auto;
+    margin: 0 auto;
+    padding: 0 auto;
 }
+
+/*@keyframes blinker {*/
+    /*25% { border-color: #F52887; }*/
+    /*50% { border-color: floralwhite; }*/
+    /*75% { border-color: #FFFF00; }*/
+/*}*/
 
 body {
     background:#000000;
@@ -54,6 +60,7 @@ ul, li{
     padding:2%;
     border: #008000 4px dotted;
     position:absolute;
+    /*animation: blinker 3s ease-in-out infinite alternate;*/
 }
 
 section{
@@ -95,7 +102,7 @@ aside{
 
 .type-wrap p, span{
     line-height: 1em;
-    text-align: center;
+    text-align: left;
 }
 
 .timer{
@@ -130,4 +137,8 @@ button{
 #itemspopupcontent {
     padding: 10px;
     font-size: 1em;
+}
+
+.part2, .part3, .part4, .part5 {
+    visibility: hidden;
 }
