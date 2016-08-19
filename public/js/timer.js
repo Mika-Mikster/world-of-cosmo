@@ -4,7 +4,7 @@ function timed(){
     for (var i = 0; i < timer.length; i++) {
         setTimeout(function (timer2) {
             timer2.style.visibility = 'visible';
-        }, 7000, timer[i]);
+        }, 5000, timer[i]);
     }
 }
 window.onload = timed();

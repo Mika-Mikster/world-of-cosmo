@@ -41,6 +41,10 @@ viewApp.config(['$routeProvider',
             templateUrl: '/dialog/dialogFiveB.html',
             controller: 'dialogFiveBController'
         }).
+        when('/dialogSix', {
+            templateUrl: '/dialog/dialogSix.html',
+            controller: 'dialogSixBController'
+        }).
         otherwise({
             redirectTo: '/dialogOne'
         });
@@ -109,11 +113,9 @@ viewApp.controller('dialogFourAController', function($scope, $http, testService,
     };
 
     $scope.delete = function (Name) {
-        $timeout(function(){
-            $http.delete("/itemsbag/" + "Bottle of Water").success(function() {
-                testService.setTrigger("Deleted item from dialog 5A");
-            });
-        }, 14000);
+        $http.delete("/itemsbag/" + "Bottle of Water").success(function() {
+            testService.setTrigger("Deleted item from dialog 5A");
+        });
     };
 });
 
@@ -183,6 +185,13 @@ viewApp.controller('dialogFiveAController', function($scope, $http, $timeout, te
         itemHeal: "15"
     };
 
+    $scope.recipeShampoo = {
+        id: 0,
+        itemName1: "Bottle of Water",
+        itemName2: "Jar of Bicarbonate",
+        mixItemName: "Shampoo"
+    };
+
 
     $scope.save = function () {
         $http.post(
@@ -192,6 +201,11 @@ viewApp.controller('dialogFiveAController', function($scope, $http, $timeout, te
         });
         $http.post(
             '/itemsbag', angular.toJson($scope.itemsbag8)
+        ).success(function () {
+            $scope.load();
+        });
+        $http.post(
+            '/recipe', angular.toJson($scope.recipeShampoo)
         ).success(function () {
             $scope.load();
         });
@@ -210,12 +224,27 @@ viewApp.controller('dialogFiveBController', function($scope, $http, testService)
     };
 
     $scope.delete = function (Name) {
-        $timeout(function(){
-            $http.delete("/itemsbag/" + "Bottle of Water").success(function() {
-                testService.setTrigger("Deleted item from dialog 5A");
-            });
-        }, 14000);
+        $http.delete("/itemsbag/" + "Bottle of Water").success(function() {
+            testService.setTrigger("Deleted item from dialog 5A");
+        });
     };
+});
+viewApp.controller('dialogSixController', function($scope, $http, testService) {
+
+    // $scope.itemsbag6 = {
+    //     id: 0,
+    //     itemName: "Bottle of Water",
+    //     itemDescr: "An ingredient used for ......",
+    //     itemAbi: "It can be mixed with other ingredients",
+    //     itemHit: "15",
+    //     itemHeal: "15"
+    // };
+    //
+    // $scope.delete = function (Name) {
+    //     $http.delete("/itemsbag/" + "Bottle of Water").success(function() {
+    //         testService.setTrigger("Deleted item from dialog 5A");
+    //     });
+    // };
 });
 
 // service
@@ -256,8 +285,46 @@ viewApp.controller ("itembagCtrl", function ($scope, $http, testService){
         this.hoverEdit = false;
     };
 
+    // $scope.$watch($scope.setSelected = function (itemNameSelectedMix) {
+    //     $scope.itemNameSelectedMix = [];
+    //     if(! itemNameSelectedMix) {
+    //         return;
+    //     }
+    //     angular.forEach(itemNameSelectedMix, function(itemName){
+    //         $scope.itemNameSelectedMix.push( item.itemName.toString() );
+    //     });
+    // });
     $scope.load();
 });
 
 
+viewApp.controller ("recipeCtrl", function ($scope, $http, testService){
+    $scope.load = function(){
+
+        console.log("loading recipe");
+        $http.get('/recipe').
+        success(function(data, status, headers, config)
+        {
+            $scope.recipe = data;
+        }).error(function(data, status, headers, config) {
+            console.log(status);
+            console.log(data);
+        });
+
+        $scope.items = ("Bottle of Water " + "&" + " Jar of Bicarbonate");
+
+        $scope.selection = [];
+
+        $scope.toggle = function (idx) {
+            var pos =
+                $scope.selection.indexOf(idx);
+            if (pos == -1) {
+                $scope.selection.push(idx);
+            } else {
+                $scope.selection.splice(pos, 1);
+            }
+        };
+    };
+    $scope.load();
+});
 

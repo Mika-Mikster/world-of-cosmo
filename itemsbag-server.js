@@ -24,6 +24,7 @@ app.listen(3000, function () {
 app.use(express.static('public'));
 
 
+// itemsbag database
 app.post('/itemsbag', function (req, res) {
     var connection = getConnection();
     connection.connect();
@@ -63,6 +64,87 @@ app.get('/itemsbag', function(req, res) {
 });
 
 app.delete('/itemsbag/:itemName', function(req, res) {
+    var Name = req.params.itemName;
+    var connection = getConnection();
+    console.log("deleted " + Name);
+    connection.connect();
+    connection.query('DELETE from itemsbag where itemName = ?', Name,  function(err, rows, fields) {
+
+        res.status(200).end();
+    });
+    connection.end();
+});
+
+
+// recipe database
+app.post('/recipe', function (req, res) {
+    var connection = getConnection();
+    connection.connect();
+    var newItem = {
+        id: 0,
+        itemName1: req.body.itemName1,
+        itemName2: req.body.itemName2,
+        mixItemName: req.body.mixItemName
+    };
+    var query = connection.query(
+        'INSERT INTO recipe SET ?',
+        newItem,
+        function (err, result) {
+            console.log("added " +  newItem.mixItemName);
+            res.status(100).end();
+        });
+    connection.end();
+});
+
+app.get('/recipe', function(req, res) {
+    var connection = getConnection();
+    connection.connect();
+    connection.query(
+        'SELECT * from recipe order by id desc',
+        function(err, rows, fields) {
+            if (!err) {
+                //console.log(rows);
+                res.send(JSON.stringify(rows));
+            }
+            else {
+                console.log('Error while performing Query.');
+            }
+        });
+    connection.end();
+});
+
+// app.delete('/itemsbag/:itemName', function(req, res) {
+//     var Name = req.params.itemName;
+//     var connection = getConnection();
+//     console.log("deleted " + Name);
+//     connection.connect();
+//     connection.query('DELETE from itemsbag where itemName = ?', Name,  function(err, rows, fields) {
+//
+//         res.status(200).end();
+//     });
+//     connection.end();
+// });
+
+
+// mixeditems database
+app.get('/mixeditems', function(req, res) {
+    var connection = getConnection();
+    connection.connect();
+    connection.query(
+        'SELECT * from mixeditems order by id desc',
+        function(err, rows, fields) {
+            if (!err) {
+                //console.log(rows);
+                res.send(JSON.stringify(rows));
+            }
+            else {
+                console.log('Error while performing Query.');
+            }
+        });
+    connection.end();
+});
+
+app.delete('/mixeditems/:itemName', function(req, res) {
     var Name = req.params.itemName;
     var connection = getConnection();
     console.log("deleted " + Name);
