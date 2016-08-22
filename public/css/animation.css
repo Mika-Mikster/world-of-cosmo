@@ -6,5 +6,5 @@ div #popup {
     display: none;
     border: 8px outset #E42217 ;
     animation: blink .5s ease-in-out alternate;
-    animation-iteration-count: 3;
+    animation-iteration-count: 10;
 }

@@ -187,9 +187,9 @@ viewApp.controller('dialogFiveAController', function($scope, $http, $timeout, te
 
     $scope.recipeShampoo = {
         id: 0,
+        mixItemName: "Shampoo",
         itemName1: "Bottle of Water",
-        itemName2: "Jar of Bicarbonate",
-        mixItemName: "Shampoo"
+        itemName2: "Jar of Bicarbonate"
     };
 
 
@@ -247,6 +247,7 @@ viewApp.controller('dialogSixController', function($scope, $http, testService) {
     // };
 });
 
+
 // service
 viewApp.service('testService', function(){
 
@@ -258,6 +259,36 @@ viewApp.service('testService', function(){
         notification = notification2;
     };
 });
+
+
+// Recipe controller
+viewApp.controller ("recipeCtrl", function ($scope, $http, testService){
+    $scope.load = function() {
+
+        console.log("loading recipe");
+        $http.get('/recipe').success(function (data, status, headers, config)
+        {
+            $scope.recipes = data;
+        }).error(function (data, status, headers, config) {
+            console.log(status);
+            console.log(data);
+        });
+
+        testService.addNotification(
+            $scope.load
+        );
+
+        $scope.hoverIn = function () {
+            this.hoverEdit = true;
+        };
+
+        $scope.hoverOut = function () {
+            this.hoverEdit = false;
+        };
+        $scope.load();
+    };
+});
+
 
 // Itembag controller
 viewApp.controller ("itembagCtrl", function ($scope, $http, testService){
@@ -285,46 +316,32 @@ viewApp.controller ("itembagCtrl", function ($scope, $http, testService){
         this.hoverEdit = false;
     };
 
-    // $scope.$watch($scope.setSelected = function (itemNameSelectedMix) {
-    //     $scope.itemNameSelectedMix = [];
-    //     if(! itemNameSelectedMix) {
-    //         return;
-    //     }
-    //     angular.forEach(itemNameSelectedMix, function(itemName){
-    //         $scope.itemNameSelectedMix.push( item.itemName.toString() );
-    //     });
-    // });
-    $scope.load();
-});
+    $scope.items = ("Bottle of Water " + "&" + " Jar of Bicarbonate");
 
+    $scope.selection = [];
 
-viewApp.controller ("recipeCtrl", function ($scope, $http, testService){
-    $scope.load = function(){
-
-        console.log("loading recipe");
-        $http.get('/recipe').
-        success(function(data, status, headers, config)
-        {
-            $scope.recipe = data;
-        }).error(function(data, status, headers, config) {
-            console.log(status);
-            console.log(data);
-        });
-
-        $scope.items = ("Bottle of Water " + "&" + " Jar of Bicarbonate");
-
-        $scope.selection = [];
-
-        $scope.toggle = function (idx) {
-            var pos =
-                $scope.selection.indexOf(idx);
-            if (pos == -1) {
-                $scope.selection.push(idx);
-            } else {
-                $scope.selection.splice(pos, 1);
-            }
-        };
+    $scope.toggle = function (idx) {
+        var pos =
+            $scope.selection.indexOf(idx);
+        if (pos == -1) {
+            $scope.selection.push(idx);
+        } else {
+            $scope.selection.splice(pos, 1);
+        }
     };
+
+
     $scope.load();
 });
 
+
+
+// $scope.$watch($scope.setSelected = function (itemNameSelectedMix) {
+//     $scope.itemNameSelectedMix = [];
+//     if(! itemNameSelectedMix) {
+//         return;
+//     }
+//     angular.forEach(itemNameSelectedMix, function(itemName){
+//         $scope.itemNameSelectedMix.push( item.itemName.toString() );
+//     });
+// });

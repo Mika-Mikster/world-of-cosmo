@@ -129,7 +129,7 @@ button{
     margin-top: 10px;
 }
 
-#itemspopup {
+#itemspopup, #recipepopup {
     position: absolute;
     top:16%;
     right:-9%;
@@ -142,9 +142,20 @@ button{
     z-index: 200;
 }
 
-#itemspopupcontent {
+#itemspopupcontent, #recipepopupcontent {
     padding: 10px;
     font-size: 1em;
+
+}
+
+#itemspopupcontent li:nth-child(1){
+    text-align: center;
+    font-weight: bold;
+}
+
+#itemspopupcontent li:nth-child(even){
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 .part2, .part3, .part4, .part5 {

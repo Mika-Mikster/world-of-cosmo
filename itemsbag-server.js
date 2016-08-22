@@ -82,9 +82,9 @@ app.post('/recipe', function (req, res) {
     connection.connect();
     var newItem = {
         id: 0,
+        mixItemName: req.body.mixItemName,
         itemName1: req.body.itemName1,
-        itemName2: req.body.itemName2,
-        mixItemName: req.body.mixItemName
+        itemName2: req.body.itemName2
     };
     var query = connection.query(
         'INSERT INTO recipe SET ?',
