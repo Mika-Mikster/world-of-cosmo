@@ -1,22 +1,17 @@
 <link href="/css/pop-up.css" rel="stylesheet"/>
 <div class="wrap">
     <div class="type-wrap">
-            <span>You feel the world settle around you, or rather you settle into the world.</span>
-            <!--<br>In front of you, once again, you find the old woman standing with a peculiar glint in her eyes.<br>-->
-            <!--“Heed my words young hero for your world is filled with terrors unseen.”<br>-->
-            <!--Her face turns and you follow her gaze.</span>-->
-            <!--<p>The place where you are standing is in fact Main street, but without the people, and the colors also seem a little off.-->
-            <!--Everything is brighter and extremely colourful.-->
-            <!--The woman is looking at a cosmetics store across the street. You don’t know why, but just by looking at it, you feel unnerved.-->
-            <!--“Evil lurks in bright places.” the woman says. “You have been tainted, as have we all.”-->
-            <!--“We have been smeared, doused, padded, and splattered.”-->
-            <!--“And it is all inside of you now. The toxins. The chemicals they clack into their formulas.”-->
-            <!--“Formulas that promise to do you good. To make you better, or make you pretty, and clean you right up!”</p>-->
-            <!--<p>She turns, looking you straight in the eye. “It is time you truly clean yourself.”-->
-            <!--“However, it takes real courage, determination, and brilliance to defeat the destructive Cosmetic Industry.”-->
-            <!--“You are in the World of Cosmo now. And I, Sheeba, have brought you here to see.”-->
-            <!--“Now show me what you can do!” &#45;&#45;</p>-->
-            <!--<p>In the blink of an eye Sheeba disappears. You now find a fabulous bag standing in her place.-->
+            <span id="dialog1">You feel the world settle around you, or rather you settle into the world.
+            <br>In front of you, once again, you find the old woman standing with a peculiar glint in her eyes.
+            “Heed my words young hero for your world is filled with terrors unseen.”
+            Her face turns and you follow her gaze.</span>
+            <br><span id="dialog2">The place where you are standing is Main street, but without the people, and the colors seem a little off.
+            The woman is looking at a cosmetics store across the street. You don’t know why, but just by looking at it, you feel unnerved.</span>
+            <br><span id="dialog3"> “Evil lurks in bright places.” the woman says. “You have been tainted, the toxins are all inside of you now.
+                The chemicals in formulas that promise to do you good. To make you better, or make you pretty, and clean you right up!”</span>
+            <br><span id="dialog4">She turns, looking you straight in the eye. “It is time you truly clean yourself. However, it takes real courage, determination,
+                and brilliance to defeat the destructive Cosmetic Industry. You are in the World of Cosmo now. And I, Sheeba, have brought you here to see. Now show me what you can do!”
+            In the blink of an eye Sheeba disappears, leaving a fabulous bag in her place.</span>
 </div></div>
 <div class="buttons">
 <button class="timer" id="popupbutton">Pick up the bag</button></div>
@@ -29,8 +24,7 @@
             <br>Jar of Bicarbonate (ingredient)
         </p>
         <div>
-            <form>
-                <button id="popupclose" type="submit" ng-click="save()"><a href=#dialogThree>Continue</a></button>
+            <form><a href=#dialogThree id="popupclose" ng-click="save()">Continue</a>
             </form>
         </div>
     </div>

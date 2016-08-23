@@ -12,37 +12,11 @@
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-<div id="overlay"></div>
 <div ng-app="viewApp">
-    <div class="container">
-        <section>
-            <div ng-view></div>
-        </section>
-        <aside>
-            <div ng-app="displayApp">
-                <div ng-controller="itembagCtrl">
-                    <div class="bag">
-                        <h1>Fabulous bag</h1>
-                    <ul>
-                        <li ng-repeat="itemsbag in itemsbags" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
-                        {{itemsbag.itemName}}
-                        <div id="itemspopup" ng-show="hoverEdit">
-                            <div id="itemspopupcontent"><ul>
-                                <li>{{itemsbag.itemName}}</li>
-                                <li>{{itemsbag.itemDescr}}</li>
-                                <li>{{itemsbag.itemAbi}}</li>
-                                <li>{{itemsbag.itemHit}}</li>
-                                <li>{{itemsbag.itemHeal}}</li>
-                            </ul>
-                            </div>
-                        </div>
-                    </li>
-                    </ul>
-                </div>
-                    </div>
-            </div>
-        </aside>
-    </div>
+    <div id="container">
+        <img id="mm" src="img/mm-large.gif"/>
+        <img id="logo" src="img/World-of-Cosmo.png"/>
+    <img id="dm" src="img/dm-large.gif"/></div>
 </div>
 </body>
 </html>
