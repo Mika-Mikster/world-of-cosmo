@@ -43,7 +43,7 @@ viewApp.config(['$routeProvider',
         }).
         when('/dialogSix', {
             templateUrl: '/dialog/dialogSix.html',
-            controller: 'dialogSixBController'
+            controller: 'dialogSixController'
         }).
         otherwise({
             redirectTo: '/dialogOne'
@@ -115,7 +115,7 @@ viewApp.controller('dialogFourAController', function($scope, $http, testService,
 
     $scope.delete = function (Name) {
         $http.delete("/itemsbag/" + "Bottle of Water").success(function() {
-            testService.setTrigger("Deleted item from dialog 5A");
+            testService.setTrigger("Deleted item from dialog 4A");
         });
     };
 });
@@ -163,10 +163,7 @@ viewApp.controller('dialogFourCController', function($scope, $http, testService)
 });
 
 
-viewApp.controller('dialogFiveAController', function($scope, $http, $timeout, testService) {
-    $timeout(function(){
-        testService.setTrigger("Delay delete item from dialog 4A");
-    }, 3000);
+viewApp.controller('dialogFiveAController', function($scope, $http, testService) {
 
     $scope.itemsbag7 = {
         id: 0,
@@ -197,21 +194,24 @@ viewApp.controller('dialogFiveAController', function($scope, $http, $timeout, te
     $scope.save = function () {
         $http.post(
             '/itemsbag', angular.toJson($scope.itemsbag7)
-        ).success(function () {
-            $scope.load();
-        });
+        ).success(
+            function () {
+                testService.setTrigger("Item from dialog 5A");
+            });
         $http.post(
             '/itemsbag', angular.toJson($scope.itemsbag8)
-        ).success(function () {
-            $scope.load();
-        });
+        ).success(
+            function () {
+                testService.setTrigger("Item from dialog 5A");
+            });
         $http.post(
             '/recipe', angular.toJson($scope.recipeShampoo)
-        ).success(function () {
-            $scope.load();
-        });
+        ).success(
+            function () {
+                testService.setTrigger("Item from dialog 5A");
+            });
     };
-    testService.setTrigger("Item from dialog 2");
+
 });
 viewApp.controller('dialogFiveBController', function($scope, $http, testService) {
 
@@ -226,7 +226,7 @@ viewApp.controller('dialogFiveBController', function($scope, $http, testService)
 
     $scope.delete = function (Name) {
         $http.delete("/itemsbag/" + "Bottle of Water").success(function() {
-            testService.setTrigger("Deleted item from dialog 5A");
+            testService.setTrigger("Deleted item for dialog 5A");
         });
     };
 });
@@ -262,9 +262,9 @@ viewApp.controller ("recipeCtrl", function ($scope, $http, testService){
             console.log(status);
             console.log(data);
         });
-
-
     };
+
+    $scope.load();
 
     $scope.hovered = function(){
         this.hoverShow = true;
@@ -274,7 +274,6 @@ viewApp.controller ("recipeCtrl", function ($scope, $http, testService){
         this.hoverShow = false;
     };
 
-    $scope.load();
 });
 
 
@@ -290,7 +289,7 @@ viewApp.controller ("mixeditemsCtrl", function ($scope, $http, testService){
             console.log(status);
             console.log(data);
         });
-        
+
     };
     $scope.load();
 
@@ -320,7 +319,7 @@ viewApp.controller ("itembagCtrl", function ($scope, $http, testService){
             $scope.load
         );
     };
-
+    $scope.load();
 
     $scope.hoverIn = function(){
         this.hoverEdit = true;
@@ -363,6 +362,7 @@ viewApp.controller ("itembagCtrl", function ($scope, $http, testService){
                 $http.delete("/itemsbag/" + $scope.itemShampoo[1]).success(function() {
                     testService.setTrigger("Deleted items for mixing");
                 });
+                $scope.selection = [];
             }
         }
     };

@@ -44,10 +44,14 @@ var part3 = document.getElementById("part3");
 // }
 
 // window.onload = dialogSwitch();
-//
-// function showing () {
+
+// document.getElementById("#show").addEventListener("click", function () {
 //     var bag = document.getElementsByClassName(".bag");
+//     bag.style.visibility = "visible";
+// });
 //
-//     bag.style.visibility = 'visible';
-// }
+// document.getElementById("#show").addEventListener("click", function () {
+//     var level2 = document.getElementsByClassName(".level2");
+//     level2.style.visibility = "visible";
+// });
 

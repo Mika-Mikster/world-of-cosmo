@@ -113,12 +113,12 @@ app.get('/recipe', function(req, res) {
     connection.end();
 });
 
-// app.delete('/itemsbag/:itemName', function(req, res) {
-//     var Name = req.params.itemName;
+// app.delete('/recipe/:mixItemName', function(req, res) {
+//     var Name = req.params.mixItemName;
 //     var connection = getConnection();
 //     console.log("deleted " + Name);
 //     connection.connect();
-//     connection.query('DELETE from itemsbag where itemName = ?', Name,  function(err, rows, fields) {
+//     connection.query('DELETE from itemsbag where mixItemName = ?', Name,  function(err, rows, fields) {
 //
 //         res.status(200).end();
 //     });

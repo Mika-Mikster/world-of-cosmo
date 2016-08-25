@@ -47,8 +47,8 @@
                             </div>
                         </li>
                         <br>
-                        <li class="level2">{{selection | json}}</li>
-                        <button class="level2" id="mix" ng-click="save()">Mix items</button>
+                        <li>{{selection | json}}</li>
+                        <button id="mix" ng-click="save()">Mix items</button>
                     </ul>
                 </div>
             </div>
@@ -80,7 +80,7 @@
                 </div>
             </div>
 
-            <div class="level2" ng-controller="recipeCtrl">
+            <div ng-controller="recipeCtrl">
                 <div class="bag">
                     <h4>Recipes</h4>
                     <ul>
@@ -90,9 +90,10 @@
                             <div id="recipepopup" ng-show="hoverShow">
                                 <div id="recipepopupcontent">
                                     <ul>
+                                        <li>{{recipe.mixItemName}}</li>
                                         <li>Mix:</li>
                                         <li>{{recipe.itemName1}}</li>
-                                        <li>with</li>
+                                        <li>&</li>
                                         <li>{{recipe.itemName2}}</li>
                                     </ul>
                                 </div>

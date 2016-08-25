@@ -65,7 +65,6 @@ img#dm,#logo, #mm{
 .bag{
     padding:10px;
     color: #4EE2EC;
-
 }
 
 .bag h1{
@@ -217,12 +216,12 @@ button{
 
 }
 
-#itemspopupcontent li:nth-child(1){
+#itemspopupcontent li:nth-child(1), #recipepopup li:nth-child(1), #mixeditemspopup li:nth-child(1){
     text-align: center;
     font-weight: bold;
 }
 
-#itemspopupcontent li:nth-child(even){
+#itemspopupcontent li:nth-child(even), #recipepopup li:nth-child(2), #mixeditemspopup li:nth-child(even){
     font-weight: bold;
     text-decoration: underline;
 }
@@ -253,10 +252,6 @@ button{
 
 #createdItems {
     visibility: hidden;
-}
-
-.level2 {
-    visibility: visible;
 }
 
 #part1 {
