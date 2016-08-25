@@ -3,20 +3,29 @@ margin: 0 auto;
 padding: 0 auto;
 }
 
+@keyframes blinker {
+    25% { border-color: #F52887; }
+    50% { border-color: floralwhite; }
+    75% { border-color: #FFFF00; }
+}
+
 body {
     background:#000000;
     font-family: 'Slabo 27px', serif;
     color: #FFF;
 }
 
-#container{
-    top: 25%;
-    left: 50%;
-    margin-left: -40%;
-    width:80%;
-    overflow: hidden;
-    height:auto;
+
+.container{
+    top: 13%;
+    left: 48%;
+    margin-left: -36%;
+    width:70%;
+    height:60%;
+    padding:2%;
+    border: #008000 4px dotted;
     position:absolute;
+    animation: blinker 3s ease-in-out infinite alternate;
 }
 
 img#dm,#logo, #mm{
@@ -50,11 +59,6 @@ img#dm,#logo, #mm{
     padding-bottom: 10px;
 }
 
-table {
-    border-collapse: collapse;
-    line-height: 1.5em;
-}
-
 a{
     text-decoration: none;
     color: #008000;
@@ -82,6 +86,16 @@ ul, li{
     height:60%;
     padding:2%;
     border: #008000 4px dotted;
+    position:absolute;
+}
+
+#container{
+    top: 25%;
+    left: 50%;
+    margin-left: -40%;
+    width:80%;
+    overflow: hidden;
+    height:auto;
     position:absolute;
 }
 
@@ -125,6 +139,13 @@ aside{
 .type-wrap p, span{
     line-height: 1em;
     text-align: center;
+}
+
+.dialogHover{
+    color: #F52887;
+    -webkit-opacity: 1;
+    -moz-opacity: 1;
+    opacity: 1;
 }
 
 .fade{
@@ -200,7 +221,7 @@ button{
     margin-top: 10px;
 }
 
-#itemspopup {
+#itemspopup, #recipepopup {
     position: absolute;
     top:16%;
     right:-9%;
@@ -213,7 +234,49 @@ button{
     z-index: 200;
 }
 
-#itemspopupcontent {
+#itemspopupcontent, #recipepopupcontent {
     padding: 10px;
     font-size: 1em;
+
+}
+
+#itemspopupcontent li:nth-child(1){
+    text-align: center;
+    font-weight: bold;
+}
+
+#itemspopupcontent li:nth-child(even){
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+@keyframes blinks {
+    0% {
+        border-color: #02FFFF;
+    }
+    25% {
+        border-color: #410F42;
+    }
+    50% {
+        border-color: #C120DA;
+    }
+    75% {
+        border-color: #002AC3;
+    }
+    100% {
+        border-color: #0066FF;
+    }
+}
+
+.start {
+    text-align: center;
+    margin-left: 35%;
+    margin-top: -5%;
+    font-size: 2.5em;
+    width: 35%;
+    height: 100px;
+    border: 10px outset;
+    color: #F62817;
+    background-color: #FFD801;
+    animation: blinks 4s ease-in-out infinite alternate;
 }

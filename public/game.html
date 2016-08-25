@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>The wonderful world of Cosmo</title>
+    <title>The wonderful world of Cosmo, Tutorial level 1</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
@@ -23,23 +23,51 @@
                 <div ng-controller="itembagCtrl">
                     <div class="bag">
                         <h1>Fabulous bag</h1>
-                    <ul>
-                        <li ng-repeat="itemsbag in itemsbags" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
-                        {{itemsbag.itemName}}
-                        <div id="itemspopup" ng-show="hoverEdit">
-                            <div id="itemspopupcontent"><ul>
-                                <li>{{itemsbag.itemName}}</li>
-                                <li>{{itemsbag.itemDescr}}</li>
-                                <li>{{itemsbag.itemAbi}}</li>
-                                <li>{{itemsbag.itemHit}}</li>
-                                <li>{{itemsbag.itemHeal}}</li>
-                            </ul>
+                        <ul>
+                            <li ng-repeat="itemsbag in itemsbags" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()"
+                                ng-class="{'selected':selection.indexOf($index) != -1}">
+                                <!--<button ng-click="setSelected(mix.itemName)" ng-class="{selected: mix.itemName === itemNameSelectedmix}">-->
+                                <a href="" ng-click="toggle($index)">{{itemsbag.itemName}}</a>
+                                <!--</button>-->
+
+                                <div id="itemspopup" ng-show="hoverEdit">
+                                    <div id="itemspopupcontent">
+                                        <ul>
+                                            <li>{{itemsbag.itemName}}</li>
+                                            <li>Description:</li>
+                                            <li>{{itemsbag.itemDescr}}</li>
+                                            <li>Ability:</li>
+                                            <li>{{itemsbag.itemAbi}}</li>
+                                            <li>Hitpoints:</li>
+                                            <li>{{itemsbag.itemHit}}</li>
+                                            <li>Healthpoints:</li>
+                                            <li>{{itemsbag.itemHeal}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>{{selection | json}}</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div ng-controller="recipeCtrl">
+                    <div class="bag">
+                        <ul>
+                            <li ng-repeat="recipe in recipes" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+                                {{recipe.mixItemName}}
+                            </li>
+                        </ul>
+                        <div id="recipepopup" ng-show="hoverEdit">
+                            <div id="recipepopupcontent">
+                                <ul>
+                                    <li>{{recipe.itemName1}}</li>
+                                    <li>{{recipe.itemName2}}</li>
+                                </ul>
                             </div>
                         </div>
-                    </li>
-                    </ul>
-                </div>
                     </div>
+                </div>
             </div>
         </aside>
     </div>
