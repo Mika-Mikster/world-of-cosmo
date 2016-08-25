@@ -9,15 +9,63 @@
     75% { border-color: #FFFF00; }
 }
 
+@keyframes blinks {
+    0% {
+        border-color: #02FFFF;
+    }
+    25% {
+        border-color: #410F42;
+    }
+    50% {
+        border-color: #C120DA;
+    }
+    75% {
+        border-color: #002AC3;
+    }
+    100% {
+        border-color: #0066FF;
+    }
+}
+
 body {
     background:#000000;
     font-family: 'Slabo 27px', serif;
     color: #FFF;
 }
 
+#container{
+    top: 25%;
+    left: 50%;
+    margin-left: -40%;
+    width:80%;
+    overflow: hidden;
+    height:auto;
+    position:absolute;
+}
+
+img#dm,#logo, #mm{
+    float:left;
+}
+
+#logo{
+    margin-top:5%;
+    height:60%;
+    width:60%;
+}
+#mm{
+    width:20%;
+    height:20%;
+}
+
+#dm{
+    width:20%;
+    height:20%;
+}
+
 .bag{
     padding:10px;
     color: #4EE2EC;
+
 }
 
 .bag h1{
@@ -25,11 +73,6 @@ body {
     font-size:1.5em;
     text-decoration: underline;
     padding-bottom: 10px;
-}
-
-table {
-    border-collapse: collapse;
-    line-height: 1.5em;
 }
 
 a{
@@ -92,6 +135,11 @@ section{
     overflow: hidden;
 }
 
+.buttons button{
+    min-width: 200px;
+    min-height:40px;
+}
+
 aside{
     width:26%;
     float:right;
@@ -123,13 +171,34 @@ button{
     font-weight: bold;
     background-color: orange;
     border: #F62817 2px outset;
-    min-width: 200px;
-    min-height:40px;
     max-height: 80px;
     margin-top: 10px;
 }
 
-#itemspopup, #recipepopup {
+.start {
+    text-align: center;
+    margin-left: 35%;
+    margin-top: -5%;
+    font-size: 2.5em;
+    width: 35%;
+    height: 100px;
+    border: 10px outset;
+    color: #F62817;
+    background-color: #FFD801;
+    animation: blinks 4s ease-in-out infinite alternate;
+}
+
+#mix{
+    font-size: 0.8em;
+    width: 90px;
+    height: 30px;
+    border: #4EE2EC 2px solid;
+    border-radius: 5%;
+    background-color: #000000;
+    color: #4EE2EC;
+}
+
+#itemspopup {
     position: absolute;
     top:16%;
     right:-9%;
@@ -142,7 +211,7 @@ button{
     z-index: 200;
 }
 
-#itemspopupcontent, #recipepopupcontent {
+#itemspopupcontent, #recipepopupcontent, #mixeditemspopupcontent {
     padding: 10px;
     font-size: 1em;
 
@@ -158,6 +227,42 @@ button{
     text-decoration: underline;
 }
 
-.part2, .part3, .part4, .part5 {
+#recipepopup {
+    position: absolute;
+    top:36%;
+    right:-9%;
+    background-color: black;
+    border: #E42217 2px dotted;
+    width:20%;
+    min-height:150px;
+    height: auto;
+    z-index: 200;
+}
+
+#mixeditemspopup {
+    position: absolute;
+    top:56%;
+    right:-9%;
+    background-color: black;
+    border: #E42217 2px dotted;
+    width:20%;
+    min-height:150px;
+    height: auto;
+    z-index: 200;
+}
+
+#createdItems {
+    visibility: hidden;
+}
+
+.level2 {
+    visibility: visible;
+}
+
+#part1 {
+    visibility: visible;
+}
+
+#part2, #part3, #part4, #part5 {
     visibility: hidden;
 }

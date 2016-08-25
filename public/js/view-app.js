@@ -77,6 +77,7 @@ viewApp.controller('dialogTwoController', function($scope, $http, testService) {
 });
 
 viewApp.controller('dialogThreeController', function($scope, testService, $http) {
+
     testService.setTrigger("Item from dialog 2");
 
     $scope.itemsbag2 = {
@@ -210,7 +211,7 @@ viewApp.controller('dialogFiveAController', function($scope, $http, $timeout, te
             $scope.load();
         });
     };
-
+    testService.setTrigger("Item from dialog 2");
 });
 viewApp.controller('dialogFiveBController', function($scope, $http, testService) {
 
@@ -231,20 +232,6 @@ viewApp.controller('dialogFiveBController', function($scope, $http, testService)
 });
 viewApp.controller('dialogSixController', function($scope, $http, testService) {
 
-    // $scope.itemsbag6 = {
-    //     id: 0,
-    //     itemName: "Bottle of Water",
-    //     itemDescr: "An ingredient used for ......",
-    //     itemAbi: "It can be mixed with other ingredients",
-    //     itemHit: "15",
-    //     itemHeal: "15"
-    // };
-    //
-    // $scope.delete = function (Name) {
-    //     $http.delete("/itemsbag/" + "Bottle of Water").success(function() {
-    //         testService.setTrigger("Deleted item from dialog 5A");
-    //     });
-    // };
 });
 
 
@@ -258,7 +245,9 @@ viewApp.service('testService', function(){
     this.addNotification= function(notification2) {
         notification = notification2;
     };
+
 });
+
 
 
 // Recipe controller
@@ -274,18 +263,43 @@ viewApp.controller ("recipeCtrl", function ($scope, $http, testService){
             console.log(data);
         });
 
-        testService.addNotification(
-            $scope.load
-        );
 
-        $scope.hoverIn = function () {
-            this.hoverEdit = true;
-        };
+    };
 
-        $scope.hoverOut = function () {
-            this.hoverEdit = false;
-        };
-        $scope.load();
+    $scope.hovered = function(){
+        this.hoverShow = true;
+    };
+
+    $scope.nothovered = function(){
+        this.hoverShow = false;
+    };
+
+    $scope.load();
+});
+
+
+// mixed items controller
+viewApp.controller ("mixeditemsCtrl", function ($scope, $http, testService){
+    $scope.load = function() {
+
+        console.log("loading mixed item");
+        $http.get('/mixeditems').success(function (data, status, headers, config)
+        { console.log(data);
+            $scope.mixeditems = data;
+        }).error(function (data, status, headers, config) {
+            console.log(status);
+            console.log(data);
+        });
+        
+    };
+    $scope.load();
+
+    $scope.hovered = function () {
+        this.hoverShow = true;
+    };
+
+    $scope.hoveredOut = function () {
+        this.hoverShow = false;
     };
 });
 
@@ -293,7 +307,6 @@ viewApp.controller ("recipeCtrl", function ($scope, $http, testService){
 // Itembag controller
 viewApp.controller ("itembagCtrl", function ($scope, $http, testService){
     $scope.load = function(){
-
         console.log("loading item");
         $http.get('/itemsbag').
         success(function(data, status, headers, config)
@@ -303,10 +316,11 @@ viewApp.controller ("itembagCtrl", function ($scope, $http, testService){
             console.log(status);
             console.log(data);
         });
+        testService.addNotification(
+            $scope.load
+        );
     };
-    testService.addNotification(
-        $scope.load
-    );
+
 
     $scope.hoverIn = function(){
         this.hoverEdit = true;
@@ -316,32 +330,41 @@ viewApp.controller ("itembagCtrl", function ($scope, $http, testService){
         this.hoverEdit = false;
     };
 
-    $scope.items = ("Bottle of Water " + "&" + " Jar of Bicarbonate");
+    $scope.itemShampoo = ["Bottle of Water", "Jar of Bicarbonate"];
 
     $scope.selection = [];
 
     $scope.toggle = function (idx) {
         var pos =
-            $scope.selection.indexOf(idx);
+            $scope.selection.indexOf($scope.itemsbags[idx].itemName);
         if (pos == -1) {
-            $scope.selection.push(idx);
+            $scope.selection.push($scope.itemsbags[idx].itemName);
         } else {
             $scope.selection.splice(pos, 1);
         }
+
+        $scope.save = function () {
+            $http.get('/mixeditems').success(function (data, status, headers, config) {
+                $scope.mixeditems = data;
+            }).error(function (data, status, headers, config) {
+                console.log(status);
+                console.log(data);
+            });
+            console.log("Saving items for mixing");
+            var mix = document.getElementById("mix");
+            // Dit is een voorlopige check of beide scopes gelijk zijn aan elkaar
+            if ($scope.selection.length == $scope.itemShampoo.length ) {
+                var showMix = document.getElementById('createdItems');
+                showMix.style.visibility = "visible";
+
+                $http.delete("/itemsbag/" + $scope.itemShampoo[0]).success(function() {
+                    testService.setTrigger("Deleted items for mixing");
+                });
+                $http.delete("/itemsbag/" + $scope.itemShampoo[1]).success(function() {
+                    testService.setTrigger("Deleted items for mixing");
+                });
+            }
+        }
     };
-
-
     $scope.load();
 });
-
-
-
-// $scope.$watch($scope.setSelected = function (itemNameSelectedMix) {
-//     $scope.itemNameSelectedMix = [];
-//     if(! itemNameSelectedMix) {
-//         return;
-//     }
-//     angular.forEach(itemNameSelectedMix, function(itemName){
-//         $scope.itemNameSelectedMix.push( item.itemName.toString() );
-//     });
-// });

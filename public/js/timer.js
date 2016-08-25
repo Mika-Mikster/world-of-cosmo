@@ -4,77 +4,50 @@ function timed(){
     for (var i = 0; i < timer.length; i++) {
         setTimeout(function (timer2) {
             timer2.style.visibility = 'visible';
-        }, 5000, timer[i]);
+        }, 3000, timer[i]);
     }
 }
 window.onload = timed();
 
-// var dialog = viewApp;
+var part1 = document.getElementById("part1");
+var part2 = document.getElementById("part2");
+var part3 = document.getElementById("part3");
 
-// var textPart1 = document.getElementsByClassName("part1");
-// var textPart2 = document.getElementsByClassName("part2");
-// var textPart3 = document.getElementsByClassName("part3");
-
-// switch (dialog) {
-//     case dialogOneController:
-//     function timed1(){
-//         for (var i = 0; i < timer.length; i++) {
-//             setTimeout(function (timer2) {
-//                 timer2.style.visibility = 'visible';
-//             }, 7000, timer[i]);
+// function dialogSwitch() {
+//     var check = 1;
+//     setTimeout(function(){
+//         //hide dialog1
+//         part1.style.visibility = 'hidden';
+//         //show dialog2
+//         part2.style.visibility = 'visible';
+//         check = 2;
+//         if(check == 2) {
+//             console.log("Check is 2");
+//             setTimeout(function () {
+//                 //hide 1dialog2
+//                 part2.style.visibility = 'hidden';
+//                 //show dialog3
+//                 part3.style.visibility = 'visible';
+//                 check = 3;
+//                 if (check == 3 && part3 == 3){
+//                     console.log("Check is 3 && dialog3 is found");
+//                     setTimeout(function () {
+//                         //hide part3
+//                         part2.style.visibility = 'hidden';
+//                         //show dialog4
+//                         part3.style.visibility = 'visible';
+//                     }, 3000);
+//                 }
+//             }, 2000);
 //         }
-//     }
-//         window.onload = timed1();
-//     function showText() {
-//         for (var a = 0; a < textPart1.length; a++) {
-//             setTimeout(function (hideText2) {
-//                 console.log("hide text part 1");
-//                 hideText2.style.visibility = 'hidden';
-//             }, 3000, textPart1[a]);
-//         }
-//         for (var b = 0; b < textPart2.length; b++) {
-//             setTimeout(function (showText2) {
-//                 console.log("show text part 2");
-//                 showText2.style.visibility = 'visible';
-//             }, 3000, textPart2[b]);
-//         }
-//         for (var c = 0; c < textPart2.length; c++) {
-//             setTimeout(function (hideText3) {
-//                 console.log("hide text part 1");
-//                 hideText3.style.visibility = 'hidden';
-//             }, 7000, textPart2[c]);
-//         }
-//         for (var d = 0; d < textPart3.length; d++) {
-//             setTimeout(function (showText3) {
-//                 console.log("show text part 3");
-//                 showText3.style.visibility = 'visible';
-//             }, 7000, textPart3[d]);
-//         }
-//     }
-//
-//         window.onload = showText();
-//         break;
-//     case dialogTwoController:
-//     function timed2() {
-//         for (var i = 0; i < timer.length; i++) {
-//             setTimeout(function (timer2) {
-//                 timer2.style.visibility = 'visible';
-//             }, 14000, timer[i]);
-//         }
-//     }
-//         window.onload = timed2();
-//         break;
-//     case dialogThreeController:
-//     function timed3() {
-//         for (var i = 0; i < timer.length; i++) {
-//             setTimeout(function (timer2) {
-//                 timer2.style.visibility = 'visible';
-//             }, 14000, timer[i]);
-//         }
-//     }
-//         window.onload = timed3();
-//         break;
-//
-//
-//
+//     }, 1000);
 // }
+
+// window.onload = dialogSwitch();
+//
+// function showing () {
+//     var bag = document.getElementsByClassName(".bag");
+//
+//     bag.style.visibility = 'visible';
+// }
+
