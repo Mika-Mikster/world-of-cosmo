@@ -3,6 +3,7 @@
 var closePopup = document.getElementById("popupclose");
 var overlay = document.getElementById("overlay");
 var popup = document.getElementById("popup");
+// var popupAnimation = document.getElementById("popup-animation");
 var button = document.getElementById("popupbutton");
 
 // Close Popup Event

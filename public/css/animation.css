@@ -1,0 +1,10 @@
+@keyframes blink {
+    50% { border-color: #FFFF00; }
+}
+
+div #popup {
+    display: none;
+    border: 8px outset #E42217 ;
+    animation: blink .5s ease-in-out alternate;
+    animation-iteration-count: 10;
+}
